@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from django.utils.translation import ugettext
+from django.utils.translation import gettext
 
 from parler.admin import TranslatableAdmin
 
@@ -31,8 +31,8 @@ class CategoryAdmin(TranslatableAdmin, TreeAdmin):
     def get_form(self, request, obj=None, **kwargs):
         FormClass = super(CategoryAdmin, self).get_form(request, obj, **kwargs)
         # Workaround for missing translations on treebeard
-        FormClass.base_fields['_position'].label = ugettext('Position')
-        FormClass.base_fields['_ref_node_id'].label = ugettext('Relative to')
+        FormClass.base_fields['_position'].label = gettext('Position')
+        FormClass.base_fields['_ref_node_id'].label = gettext('Relative to')
         return FormClass
 
 
